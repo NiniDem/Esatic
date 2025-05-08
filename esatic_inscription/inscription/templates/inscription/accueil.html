@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenue - Site d'inscription</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e3f2fd, #bbdefb);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            color: #1976d2;
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin-bottom: 2em;
+        }
+
+        img {
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 2em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        button {
+            padding: 1em 2em;
+            font-size: 1em;
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button:hover {
+            background-color: #1565c0;
+        }
+    </style>
+</head>
+<body>
+    <img src="{% static 'inscription/images/logo-esatic.png' %}" alt="Image d'inscription">
+    <h1>Bienvenue sur le site d'inscription</h1>
+    <p>Notre école offre un enseignement de qualité, reconnu au niveau national et international. Rejoignez-nous pour un parcours académique d'excellence dans un environnement moderne, inclusif et stimulant.</p>
+    <button><a href="{% url 'inscription' %}">Commencer l'inscription</a> </button>
+</body>
+</html>

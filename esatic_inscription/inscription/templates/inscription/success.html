@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Succès de l'inscription</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e0f7ec, #d0f0dc);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            color: #2e7d32;
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            font-size: 1.2em;
+            max-width: 500px;
+            text-align: center;
+            margin-bottom: 2em;
+        }
+
+        button {
+            padding: 0.8em 1.5em;
+            font-size: 1em;
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #27692a;
+        }
+
+        #receipt {
+            display: none;
+            font-size: 1em;
+            text-align: left;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media print {
+            body {
+                background: white;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 2em;
+                height: auto;
+            }
+
+            h1, p, button {
+                display: none;
+            }
+
+            #receipt {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Inscription réussie !</h1>
+    <p>Félicitations, votre inscription a été enregistrée avec succès.</p>
+    <button onclick="window.print()">Imprimer la confirmation</button>
+
+    <div id="receipt">
+        <h2>Reçu d'inscription</h2>
+        <p><strong>Nom :</strong> <span id="rNom">Dupont</span></p>
+        <p><strong>Prénom :</strong> <span id="rPrenom">Jean</span></p>
+        <p><strong>Email :</strong> <span id="rEmail">jean.dupont@example.com</span></p>
+        <p><strong>Date :</strong> <span id="date"></span></p>
+        <p><strong>ID de confirmation :</strong> <span id="confId"></span></p>
+        <p id="phrase"></p>
+    </div>
+
+    <script>
+        const today = new Date();
+        const dateStr = today.toLocaleDateString('fr-FR', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        document.getElementById("date").textContent = dateStr;
+
+        const randomId = "CONF-" + Math.floor(Math.random() * 1000000);
+        document.getElementById("confId").textContent = randomId;
+
+        // Récupérer les infos du reçu
+        const nom = document.getElementById("rNom").textContent;
+        const prenom = document.getElementById("rPrenom").textContent;
+
+        // Ajouter une phrase personnalisée dans le reçu
+        document.getElementById("phrase").textContent = `Merci ${prenom} ${nom} pour votre inscription. Ce reçu confirme que vos informations ont été bien enregistrées.`;
+    </script>
+</body>
+</html>

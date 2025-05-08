@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inscription</title>
+    <link rel="stylesheet" href="{% static 'inscription/style.css' %}">
+</head>
+<body>
+    <img src="{% static 'inscription/images/logo-esatic.png' %}" alt="">
+    <h2>Formulaire d'inscription</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Soumettre</button>
+    </form>
+</body>
+</html>
